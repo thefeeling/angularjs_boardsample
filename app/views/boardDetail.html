@@ -1,0 +1,26 @@
+<div ng-controller="DetailCtrl" class="container">
+	<h1>게시물 상세</h1>
+
+	<div class="row">
+		<div class="col-xs-6">게시물 번호</div>
+		<div class="col-xs-6">{{ boardDt.boardNo }}</div>
+
+		<div class="col-xs-6">제목</div>
+		<div class="col-xs-6">{{ boardDt.boardTitle }}</div>
+
+		<div class="col-xs-6">내용</div>
+		<div class="col-xs-6">{{ boardDt.boardContent }}</div>
+
+		<div class="col-xs-6">작성일자</div>
+		<div class="col-xs-6">{{ boardDt.boardInsertDate }}</div>		
+
+		<div class="col-xs-6">수정일자</div>
+		<div class="col-xs-6">{{ boardDt.boardModifyDate }}</div>
+	</div>
+
+	
+	<span class="row">
+		<button ng-click="boardUpdate(boardDt.boardNo)">수정</button>
+		<button ng-click="boardDelete(boardDt.boardNo)">삭제</button>
+	</span>
+</div>
