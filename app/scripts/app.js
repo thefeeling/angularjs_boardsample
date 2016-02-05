@@ -70,6 +70,8 @@
       $http.defaults.headers.common.Authorization = 'Basic YmVlcDpib29w'
     });
     */
+    console.log("------------------------------------------------------------------------------------------------------------------------");
     console.log("$http default configuration");
+    console.log("------------------------------------------------------------------------------------------------------------------------")
     console.table($httpProvider.defaults.headers);
 });
