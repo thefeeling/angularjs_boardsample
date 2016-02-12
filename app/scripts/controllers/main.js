@@ -34,15 +34,15 @@
 	$scope.getJsonBoardAllList = function(){
 		$http(config)
 		.then(
-		function(response) {
-			debugger;
-			console.log(response.status);
-			console.log(response.data);
-		},
-		function(response) {
-			$scope.data = response.data || "Request failed";
-			$scope.status = response.status;
-		});
+			function(response) {
+				debugger;
+				console.log(response.status);
+				console.log(response.data);
+			},
+			function(response) {
+				$scope.data = response.data || "Request failed";
+				$scope.status = response.status;
+			});
 	}
 
 
@@ -76,11 +76,11 @@
 	------------------------------------------------------------------------------------------------
 	*/
 	$scope.$on("$routeChangeStart", function(angularEvent, next, current){
-  		console.table(current);
-  		if(next){
-  			console.table(next);
-  		}
-  	});
+		console.table(current);
+		if(next){
+			console.table(next);
+		}
+	});
 
 	/*
 	------------------------------------------------------------------------------------------------
@@ -103,10 +103,10 @@
 	------------------------------------------------------------------------------------------------
 	: Causes $route service to reload the current route even if $location hasn't changed.
 	  As a result of that, ngView creates new scope and reinstantiates the controller.
-	*/
-	$scope.reload = function(){
-		$route.reload();
-	}
+	  */
+	  $scope.reload = function(){
+	  	$route.reload();
+	  }
 
 
 
@@ -117,6 +117,6 @@
 	: Causes $route service to update the current URL, 
 	  replacing current route parameters with those specified in newParams
 	  */
-	$scope.updateParams = function(param){
-	}
-});
+	  $scope.updateParams = function(param){
+	  }
+	});

@@ -7,35 +7,44 @@
  * # boardService
  * Service in the boardSampleApp.
  */
-angular.module('boardSampleApp')
-  .service('boardService', ['$http',function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
-    
-    function BoardModel(){
-        this.boardNo         = "";
-        this.boardTitle      = "";
-        this.boardContent    = "";
-        this.boardInsertDate = "";
-        this.boardModifyDate = "";
-    };
+ angular.module('boardSampleApp')
+ .service('boardService', ['RestfulSvc', function (RestfulSvc) {
 
-    this.getBoardModel = function(){
-    	return new BoardModel();
-    };
 
-    this.getBoardList = function(){
+	var boardFactoryObj = {} || new Object();
+	function BoardModel(){
+		this.boardNo         = "";
+		this.boardTitle      = "";
+		this.boardContent    = "";
+		this.boardInsertDate = "";
+		this.boardModifyDate = "";
+	};
 
-    };
+	this.getBoardModel = function(){
+		return new BoardModel();
+	};
 
-    this.getBoardDetail = function(){
+	this.getBoardList = function(callBack){
+		console.dir(callBack);
+		RestfulSvc.get(
+			{
+				domain : 'board',
+				action : 'list',
+				currentPage : callBack.currentPage
+			},
+			callBack.successHandler,
+			callBack.errorHandler
+		);
+	};
 
-    };
+	this.getBoardDetail = function(){
+	};
 
-    this.deleteBoardDetail = function(){
+	this.deleteBoardDetail = function(){
 
-    };
+	};
 
-    this.updateBoardDeatil = function(){
-        
-    };
+	this.updateBoardDeatil = function(){
+
+	};
 }]);

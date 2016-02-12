@@ -1,94 +1,105 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="boardSampleApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body ng-app="boardSampleApp">
+	<!--[if lte IE 8]>
+	  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	  <![endif]-->
 
 
-    <div ng-controller="MainCtrl">
-        <div ng-include="'views/boardMenu.html'"></div> 
-        <div ng-view></div>  
-
-        <div>
-            <h2>라우트 정보</h2>
-            <h3>현재 라우트 정보</h3>
-            <pre>{{ route.current || json }}</pre>
-            <!-- <pre>{{ routes }}</pre> -->
-            <br>
-            <h4>등록된 라우트 정보</h4>
-            <ul>
-                <li ng-repeat="(key, value) in routes || json"></li>
-                    <h5>{{key}}</h5>
-                    <p>{{value}}</p>
-            </ul>
-        </div>
-
-        <pre>$location.path()           = {{ location.path() }}</pre>
-        <pre>$route.current.templateUrl = {{ route.current.templateUrl }}</pre>
-        <pre>$route.current.params      = {{ route.current.params }}</pre>
-        <pre>$route.current.scope.name  = {{ route.current.$scope }}</pre>
-        <pre>$routeParams               = {{ routeParams }}</pre>
+	  <div ng-controller="MainCtrl">
+		<!-- Header Navigation -->
+		<div ng-include="'views/boardMenu.html'"></div> 
+		
+		<!-- Routing -->
+		<div ng-view></div>  
 
 
-        <button ng-click="reload()">reload()</button>
+		<button ng-click="reload()">reload()</button>
+		Routing Infomation : 
+		<input type="checkbox" 
+			   ng-model="checked" 
+			   aria-label="Toggle ngHide">
+		<!-- Route Info -->
+		<div ng-show="checked">
+			<h2>*라우트 정보</h2>
+			<h3>**현재 라우트 정보</h3>
+			<pre>{{ route.current || json }}</pre>
+			<!-- <pre>{{ routes }}</pre> -->
+			<br>
+			<h4>**등록된 라우트 정보</h4>
+			<ul>
+				<li ng-repeat="(key, value) in routes || json">
+					<pre><h5>{{key}}</h5><p>{{value}}</p></pre>
+				</li>
+			</ul>
 
-    </div>
+
+			<pre>$location.path()           = {{ location.path() }}</pre>
+			<pre>$route.current.templateUrl = {{ route.current.templateUrl }}</pre>
+			<pre>$route.current.params      = {{ route.current.params }}</pre>
+			<pre>$route.current.scope.name  = {{ route.current.$scope }}</pre>
+			<pre>$routeParams               = {{ routeParams }}</pre>
+		</div>
 
 
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	</div>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/list.js"></script>
-        <script src="scripts/controllers/write.js"></script>
-        <script src="scripts/controllers/update.js"></script>
-        <script src="scripts/controllers/detail.js"></script>
-        <script src="scripts/services/boardservice.js"></script>
-        <script src="scripts/controllers/ui.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+	<script>
+	!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+	 (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+	 r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+ }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-XXXXX-X');
+ ga('send', 'pageview');
+ </script>
+
+ <!-- build:js(.) scripts/vendor.js -->
+ <!-- bower:js -->
+ <script src="bower_components/jquery/dist/jquery.js"></script>
+ <script src="bower_components/angular/angular.js"></script>
+ <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+ <script src="bower_components/angular-animate/angular-animate.js"></script>
+ <script src="bower_components/angular-aria/angular-aria.js"></script>
+ <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+ <script src="bower_components/angular-messages/angular-messages.js"></script>
+ <script src="bower_components/angular-resource/angular-resource.js"></script>
+ <script src="bower_components/angular-route/angular-route.js"></script>
+ <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+ <script src="bower_components/angular-touch/angular-touch.js"></script>
+ <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+ <!-- endbower -->
+ <!-- endbuild -->
+
+ <!-- build:js({.tmp,app}) scripts/scripts.js -->
+ <script src="scripts/app.js"></script>
+ <script src="scripts/controllers/list.js"></script>
+ <script src="scripts/controllers/write.js"></script>
+ <script src="scripts/controllers/update.js"></script>
+ <script src="scripts/controllers/detail.js"></script>
+ <script src="scripts/services/boardservice.js"></script>
+ <script src="scripts/controllers/ui.js"></script>
+ <script src="scripts/controllers/main.js"></script>
+ <script src="scripts/services/restfulsvc.js"></script>
+ <!-- endbuild -->
 </body>
 </html>
