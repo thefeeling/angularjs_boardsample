@@ -17,24 +17,20 @@
 			<tr>
 				<td>
 					<br>
-						<a class="btn btn-default" ng-href="#/write" role="button">글쓰기</a>
+					<a class="btn btn-default" ng-href="#/write" role="button">글쓰기</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<span>
-	<!-- <button ng-if="nextPage > 1"   ng-click="pageMove(nextPage)">다음페이지</button>
-		<button ng-if="backPage && backPage >= 1"     ng-click="pageMove(backPage)">이전페이지</button> -->
-	</span>
+	<span></span>
 	<br>
+
 	<div class="row">
 		<div class="text-center">
-			<uib-pagination total-items="totalItems" 
-				 			ng-model="currentPage"
-				 			class="pagination-sm"
-				 			max-size="maxSize"
-				 			boundary-links="true" 
-				 			ng-change="pageChanged()"></uib-pagination>
+			<uib-pagination total-items="totalItems" ng-model="currentPage"
+			                class="pagination-sm"    max-size="maxSize"
+			                boundary-links="true"    ng-change="pageChanged()">
+			</uib-pagination>
 		</div>
 	</div>
 </div>

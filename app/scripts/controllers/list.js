@@ -12,7 +12,11 @@ angular.module('boardSampleApp')
   	function ($scope, boardService, $window, $http, $log) {
 	$scope.boardList   = [];
 
-	// Pagination Add
+	/*
+	 * totalItems  : total list count
+	 * currentPage : Page Number
+	 * maxSize     : Page Navigation Count
+	 */
 	$scope.totalItems  = 0;
 	$scope.currentPage = 1;
 	$scope.maxSize     = 5;

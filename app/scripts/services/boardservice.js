@@ -13,11 +13,11 @@
 
 	var boardFactoryObj = {} || new Object();
 	function BoardModel(){
-		this.boardNo         = "";
-		this.boardTitle      = "";
-		this.boardContent    = "";
-		this.boardInsertDate = "";
-		this.boardModifyDate = "";
+		this.boardNo          = "";
+		this.boardTitle       = "";
+		this.boardContent     = "";
+		this.boardInsertDate  = "";
+		this.boardModifyDate  = "";
 	};
 
 	this.getBoardModel = function(){
@@ -25,9 +25,7 @@
 	};
 
 	this.getBoardList = function(callBack){
-		console.dir(callBack);
-		RestfulSvc.get(
-			{
+		RestfulSvc.get({
 				domain : 'board',
 				action : 'list',
 				currentPage : callBack.currentPage

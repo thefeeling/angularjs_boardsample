@@ -26,6 +26,8 @@
  	}
   	/*
 	------------------------------------------------------------------------------------------------
+	Subject  : Sample get Json by $http
+	Date     : 2016.02.15
 	Issue    : Status 200, But response.data is null
 	Why      : json Question Mark('') Error
 	Solution : '' => ""
@@ -57,10 +59,13 @@
 	------------------------------------------------------------------------------------------------
 	*/
 	$scope.$on("$routeChangeSuccess", function(angularEvent, current, previous){
+		console.log("$routeChangeSuccess");
+		/*
 		console.log("현재 라우트 정보 : " + current.loadedTemplateUrl);
 		if(previous){
 			console.log("이전 라우트 정보 : " + previous.loadedTemplateUrl);
 		}
+		*/
 	});
 
 
@@ -76,10 +81,13 @@
 	------------------------------------------------------------------------------------------------
 	*/
 	$scope.$on("$routeChangeStart", function(angularEvent, next, current){
+		console.log("$routeChangeStart");
+		/*		
 		console.table(current);
 		if(next){
 			console.table(next);
-		}
+		}*/
+
 	});
 
 	/*
