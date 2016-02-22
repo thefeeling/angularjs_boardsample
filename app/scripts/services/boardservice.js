@@ -12,6 +12,10 @@
 
 
 	var boardFactoryObj = {} || new Object();
+
+	/*
+	* @Comment BoardModel
+	*/
 	function BoardModel(){
 		this.boardNo          = "";
 		this.boardTitle       = "";
@@ -20,6 +24,9 @@
 		this.boardModifyDate  = "";
 	};
 
+	/*
+	* @Comment new BoardModel Return
+	*/
 	this.getBoardModel = function(){
 		return new BoardModel();
 	};
