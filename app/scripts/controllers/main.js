@@ -37,7 +37,6 @@
 		$http(config)
 		.then(
 			function(response) {
-				debugger;
 				console.log(response.status);
 				console.log(response.data);
 			},

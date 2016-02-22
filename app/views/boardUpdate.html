@@ -1,22 +1,24 @@
 <div ng-controller="UpdateCtrl">
 <form name="updateFrm" ng-submit="updateBoardDt(boardNo)">
 	<label>제목 : 
-	  <input type="text" name="boardTitle" 
-			  ng-model="boardDt.boardTitle" 
-			  ng-minlength="10" 
-			  ng-maxlength="50" 
-			  required 
-			  ng-trim="false">
+	  <input type="text" 
+	  		 name="boardTitle" 
+			 ng-model="boardDt.boardTitle" 
+			 ng-minlength="10" 
+			 ng-maxlength="50" 
+			 required 
+			 ng-trim="false">
 	</label>
 	<br>
 	<hr>
 	<label>내용 : 
-	  <input type="text" name="boardContent" 
-			  ng-model="boardDt.boardContent" 
-			  ng-minlength="10" 
-			  ng-maxlength="100" 
-			  required 
-			  ng-trim="false">
+	  <input type="text" 
+	  		 name="boardContent" 
+			 ng-model="boardDt.boardContent" 
+			 ng-minlength="10" 
+			 ng-maxlength="100" 
+			 required 
+			 ng-trim="false">
 	</label>
 	<span>
         <!-- SUBMIT BUTTON -->

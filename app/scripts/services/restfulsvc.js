@@ -20,18 +20,38 @@
 		which provide high-level behaviors without the need to interact with the low level $http service.
 		*/
 		var prefixUrl = 'http://localhost:8080/rest';
-		var url       = prefixUrl + '/:domain/:action/:addParam';
-		var params    = {
-			domain : "@domain",
-			action : "@action",
-			addParam : "@addParam"
+		var defaultResourceObject = {
+			url       :  prefixUrl + '/:domain/:action/:addParam',
+			params    : {
+				domain   : "@domain",
+				action   : "@action",
+				addParam : "@addParam"				
+			},
+			actions   : {
+				one    : {method : 'GET', isArray : false , cancellable: true},
+				all    : {method : 'GET', isArray : true  , cancellable: true} ,
+				page   : {method : 'GET', isArray : true} ,
+				update : {method : 'PUT'}				
+			}
 		}
+		var resource = $resource(defaultResourceObject.url   ,
+								 defaultResourceObject.params,
+								 defaultResourceObject.actions);
 
-		var actions = {
-			one    : {method : 'GET', isArray : false , cancellable: true},
-			all    : {method : 'GET', isArray : true  , cancellable: true} ,
-			page   : {method : 'GET', isArray : true} ,
-			update : {method : 'PUT'}			
-		}
-		return $resource(url, params, actions);
+		// [Before Setting Code]
+		// var prefixUrl = 'http://localhost:8080/rest';
+		// var url       = prefixUrl + '/:domain/:action/:addParam';
+		// var params    = {
+		// 	domain : "@domain",
+		// 	action : "@action",
+		// 	addParam : "@addParam"
+		// }
+
+		// var actions = {
+		// 	one    : {method : 'GET', isArray : false , cancellable: true},
+		// 	all    : {method : 'GET', isArray : true  , cancellable: true} ,
+		// 	page   : {method : 'GET', isArray : true} ,
+		// 	update : {method : 'PUT'}			
+		// }
+		return resource;
 	}]);
