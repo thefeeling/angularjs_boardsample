@@ -2,22 +2,49 @@
 
 describe('Controller: ListCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('boardSampleApp'));
+	// load the controller's module
+	beforeEach(module('boardSampleApp'));
 
-  var ListCtrl,
-    scope;
+	var ListCtrl,
+			boardServiceMock,
+			scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    ListCtrl = $controller('ListCtrl', {
-      $scope: scope
-      // place here mocked dependencies
-    });
-  }));
+	// Initialize the controller and a mock scope
+	beforeEach(inject(function ($controller, $rootScope, boardService) {
+		scope = $rootScope.$new();
+		boardServiceMock = boardService;
+		ListCtrl = $controller('ListCtrl', {
+			$scope: scope,
+			boardServiceMock : boardServiceMock
+			// place here mocked dependencies
+		});
+	}));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(ListCtrl.awesomeThings.length).toBe(3);
-  });
+	it('boardSampleApp.ListCtrl.testList', function () {
+		expect(scope.testList.length).toBe(3);
+	});
+
+	it('boardSampleApp.ListCtrl.initBoardService', function () {
+		var boardList = [],
+			  totalItems;
+
+		boardServiceMock.getBoardList({
+			successHandler : function (response){
+				boardList  = response.boardList;
+				totalItems = response.boardList[0].totalCount;
+
+				expect(boardList.length).toBe(10);
+				expect(totalItems.length).toEqual(10);				
+			},
+			errorHandler : function (response){
+				boardList = null;
+				totalItems = 0;
+
+				expect(boardList).toBeNull();
+				expect(totalItems).toEqual(0);
+			}
+		})
+
+
+	});
 });
