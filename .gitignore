@@ -3,3 +3,7 @@
 /.tmp
 /.sass-cache
 /bower_components
+
+# vim temporary files
+*.swp
+*.swo
