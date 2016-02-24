@@ -41,8 +41,4 @@ describe('Service: RestfulSvc', function () {
 	it('test http.post', function () {
 		//expect(!!RestfulSvc).toBe(true);
 	});
-
-
-
-
 });
