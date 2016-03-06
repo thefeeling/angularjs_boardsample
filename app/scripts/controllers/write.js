@@ -7,11 +7,15 @@
  * # WriteCtrl
  * Controller of the boardSampleApp
  */
+
+
+
  angular.module('boardSampleApp')
  .controller('WriteCtrl', function ($scope, $window, $http, boardService) {
  	var boardDt = $scope.boardDt;
 
  	$scope.boardDt = boardService.getBoardModel();
+ 	//$scope.boardDt = boardService.getBoardModelSample();
 
  	$scope.saveBoard = function(){
  		$http.post("http://localhost:8080/rest/board/insert", $scope.boardDt)
