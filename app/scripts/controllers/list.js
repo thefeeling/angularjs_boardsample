@@ -10,6 +10,9 @@
 angular.module('boardSampleApp')
   .controller('ListCtrl', ['$scope', 'boardService', '$window', '$http', '$log', 
   	function ($scope, boardService, $window, $http, $log) {
+  	$scope.testList = ["jasmine1","jasmine2","jasmine3"];
+
+
 	$scope.boardList   = [];
 
 	/*
@@ -23,6 +26,7 @@ angular.module('boardSampleApp')
 
 	/*
 	------------------------------------------------------------------------------------------------
+	[after/before]
 	boardService.getBoardList // boardservice.js
 	------------------------------------------------------------------------------------------------	
 	* [Before]

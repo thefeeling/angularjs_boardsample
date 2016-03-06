@@ -2,22 +2,70 @@
 
 describe('Controller: ListCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('boardSampleApp'));
+	var ListCtrl,
+			boardServiceMock,
+			scope,
+			restFulSvc;
 
-  var ListCtrl,
-    scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    ListCtrl = $controller('ListCtrl', {
-      $scope: scope
-      // place here mocked dependencies
-    });
-  }));
+	// load the controller's module
+	beforeEach(module('boardSampleApp'));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(ListCtrl.awesomeThings.length).toBe(3);
-  });
+	// Initialize the controller and a mock scope
+	beforeEach(inject(function ($controller, $rootScope, boardService) {
+		scope            = $rootScope.$new();
+		boardServiceMock = boardService;
+		ListCtrl         = $controller('ListCtrl', {
+			$scope: scope
+			// place here mocked dependencies
+		});
+	}));
+
+ 	/*
+	------------------------------------------------------------------------------------------------
+	Comment  : ListCtrl 정의 유무
+	------------------------------------------------------------------------------------------------
+	*/
+	it('boardSampleApp.ListCtrl // isDefined ?', function(){
+    expect(ListCtrl).toBeDefined();
+	});
+
+
+	it('boardSampleApp.ListCtrl.testList', function () {
+		expect(scope.testList.length).toBe(3);
+	});
+	
+
+
+ 	/*
+	------------------------------------------------------------------------------------------------
+	Comment  : getBoardList Test(local server)
+	           => Failure(2016.02)
+	------------------------------------------------------------------------------------------------
+	*/
+	it('boardSampleApp.ListCtrl.initBoardService', function () {
+		var boardList = [],
+			  totalItems;
+
+		boardServiceMock.getBoardList({
+			successHandler : function (response){
+				boardList  = response.boardList;
+				totalItems = response.boardList[0].totalCount;
+
+				expect(boardList.length).toBe(10);
+				expect(totalItems.length).toEqual(10);				
+			},
+			errorHandler : function (response){
+				boardList = null;
+				totalItems = 0;
+				if(boardList){
+
+				}else{
+					fail("Http Connect Failure");
+				}
+				//expect(boardList).toBeNull().and.throwError("통신 에러");
+				//expect(totalItems).toEqual(0);
+			}
+		})
+	});
 });

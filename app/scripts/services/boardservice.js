@@ -11,6 +11,7 @@
  .service('boardService', ['RestfulSvc', function (RestfulSvc) {
 
 	var boardFactoryObj = {} || new Object();
+<<<<<<< HEAD
 	var modelList = [];
 
 	var BoardModelSample = {
@@ -24,6 +25,12 @@
 		return BoardModelSample;
 	}
 
+=======
+
+	/*
+	* @Comment BoardModel
+	*/
+>>>>>>> f5dfd677929c620de22edab6f896015dbe5fd9c3
 	function BoardModel(){
 		this.boardNo          = "";
 		this.boardTitle       = "";
@@ -31,9 +38,16 @@
 		this.boardInsertDate  = "";
 		this.boardModifyDate  = "";
 	};
+<<<<<<< HEAD
 	/* 
 	 * @Comment BoardModel Return Method
 	 */
+=======
+
+	/*
+	* @Comment new BoardModel Return
+	*/
+>>>>>>> f5dfd677929c620de22edab6f896015dbe5fd9c3
 	this.getBoardModel = function(){
 		return new BoardModel();
 	};
